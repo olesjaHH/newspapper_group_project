@@ -17,9 +17,9 @@ function searchNews(el) {
   )
     .then((res) => res.json())
     .then((res) => {
-      let data = res;
-      console.log(data);
-      return data;
+      if (res) {
+        let data = res.articles;
+      }
     });
 }
 
@@ -29,9 +29,11 @@ function topgGermany() {
   fetch(`http://newsapi.org/v2/top-headlines?country=de&apiKey=${apiKey}`)
     .then((res) => res.json())
     .then((res) => {
-      let data = res;
-      console.log(data);
+      if (res) {
+        let data = res.articles;
+        console.log(data);
+      }
     });
 }
 
-// topgGermany();
+$on(window, 'DOMContentLoaded', topgGermany);
