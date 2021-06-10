@@ -18,7 +18,7 @@ function searchNews(el) {
     .then((res) => {
       if (res) {
         $("#actualNews").innerHTML = "";
-        rendorHtml(res);
+        renderHtml(res);
       }
     });
 }
@@ -34,12 +34,12 @@ function topgGermany() {
     .then((res) => res.json())
     .then((res) => {
       if (res) {
-        rendorHtml(res);
+        renderHtml(res);
       }
     });
 }
 
-function rendorHtml(data) {
+function renderHtml(data) {
   let myData = data.articles;
   let sliceData = myData.slice(0, 6);
   sliceData.forEach((e) => {
