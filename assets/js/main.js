@@ -37,3 +37,5 @@ function topgGermany() {
 }
 
 $on(window, 'DOMContentLoaded', topgGermany);
+
+new Date(e.publishedAt).toLocaleDateString();
