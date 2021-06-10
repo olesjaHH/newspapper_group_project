@@ -11,18 +11,22 @@ function searchNews(el) {
   //   );
   //   let data = await response.json();
   //   return data;
-
   fetch(
     `http://newsapi.org/v2/everything?q=${el}&from=2021-06-10&sortBy=popularity&apiKey=${apiKey}`
   )
     .then((res) => res.json())
     .then((res) => {
       if (res) {
-        let data = res.articles;
+        $("#actualNews").innerHTML = "";
+        rendorHtml(res);
       }
     });
 }
-
+$(".btn").addEventListener("click", (e) => {
+  if ($("#Search").value) {
+    searchNews($("#Search").value);
+  }
+});
 // searchNews('Apple');
 
 function topgGermany() {
@@ -30,10 +34,25 @@ function topgGermany() {
     .then((res) => res.json())
     .then((res) => {
       if (res) {
-        let data = res.articles;
-        console.log(data);
+        rendorHtml(res);
       }
     });
 }
 
-$on(window, 'DOMContentLoaded', topgGermany);
+function rendorHtml(data) {
+  let myData = data.articles;
+  let sliceData = myData.slice(0, 6);
+  sliceData.forEach((e) => {
+    $("#actualNews").innerHTML += `
+        <article id="topNews1">
+        <img src="${e.urlToImage}" alt="" class="urlToImage">
+        <p class="author">${e.author} <span class="published">${new Date(
+      e.publishedAt
+    ).toLocaleDateString()}</span></p>
+        <h2 class="title">${e.title}</h2>
+        <p class="content">${e.content}.</p>
+        </article>`;
+  });
+}
+
+$on(window, "DOMContentLoaded", topgGermany);
