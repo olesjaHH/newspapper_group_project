@@ -34,3 +34,27 @@ footer a {
   text-decoration: none;
   color: black;
 }
+body {
+  font-family: 'Zilla Slab', serif;
+}
+/* ---------Main----------------- */
+#actualNews {
+  display: flex;
+  padding: 5%;
+  text-align: center;
+}
+#topNews1,
+#topNews2,
+#topNews3 {
+  padding: 2%;
+}
+.author {
+  display: flex;
+  justify-content: space-between;
+}
+.published {
+  font-size: 0.9rem;
+}
+.urlToImage {
+  width: 100%;
+}
