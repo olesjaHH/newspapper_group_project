@@ -37,19 +37,19 @@ footer a {
 body {
   font-family: 'Zilla Slab', serif;
 }
-/* ---------Main----------------- */
+/* --------------Main----------------- */
 #actualNews {
   display: flex;
   padding: 5%;
   text-align: center;
 }
-#topNews1,
-#topNews2,
-#topNews3 {
+#topNews1 {
   padding: 2%;
+  width: 30%;
 }
 .author {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .published {
