@@ -70,8 +70,11 @@ body {
 }
 
 /* --------------Main----------------- */
+main {
+  min-height: 75vh;
+}
 #titleNews {
-  margin: 0 0 0 7%;
+  margin: 5% 0 0 7%;
 }
 #actualNews {
   display: flex;

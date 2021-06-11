@@ -16,17 +16,16 @@ async function searchNews(el) {
   return data.articles;
 }
 
-function topgGermany() {
-  fetch(`http://newsapi.org/v2/top-headlines?country=de&apiKey=${apiKey}`)
-    .then((res) => res.json())
-    .then((res) => {
-      if (res) {
-        renderHtml(res.articles);
-      }
-    });
+async function topgGermany() {
+  let response = await fetch(
+    `http://newsapi.org/v2/top-headlines?country=de&apiKey=${apiKey}`
+  );
+  let data = await response.json();
+  return data.articles;
 }
 
 function renderHtml(data) {
+  $('#actualNews').innerHTML = '';
   let sliceData = data.slice(counter, counter + 4);
   sliceData.forEach((e) => {
     $('#actualNews').innerHTML += `
@@ -41,39 +40,37 @@ function renderHtml(data) {
   });
 }
 
-$on(window, "DOMContentLoaded", topgGermany);
-
-
-
-
-
-
-	
-$on(window, 'DOMContentLoaded', topgGermany);
-
-$('#buttonLeft').addEventListener('click', () => {
-  if (counter === 0) {
-    e.disabled = true;
-  } else {
-    counter -= 4;
-    renderHtml(newsData);
-  }
+$on(window, 'DOMContentLoaded', async (e) => {
+  newsData = await topgGermany();
+  $('#titleNews').innerHTML = `actual news from Germany`;
+  counter = 0;
+  renderHtml(newsData);
 });
 
-$('#buttonRight').addEventListener('click', () => {
-  if (counter === 20) {
-    e.disabled = true;
-  } else {
-    counter += 4;
-    renderHtml(newsData);
+$('#buttonLeft').addEventListener('click', (e) => {
+  if (counter === 0 || !newsData) {
+    return;
   }
+  counter -= 4;
+  renderHtml(newsData);
 });
 
-$('.btn').addEventListener('click', async () => {
-  if ($('#Search').value) {
-    counter = 0;
-    newsData = await searchNews($('#Search').value);
-    renderHtml(newsData);
+$('#buttonRight').addEventListener('click', (e) => {
+  if (counter === 16 || !newsData) {
+    return;
   }
+  counter += 4;
+  renderHtml(newsData);
 });
 
+$('#Search').addEventListener('keypress', async (e) => {
+  console.log(e.key);
+  if (e.key == 'Enter') {
+    if ($('#Search').value) {
+      $('#titleNews').innerHTML = $('#Search').value;
+      counter = 0;
+      newsData = await searchNews($('#Search').value);
+      renderHtml(newsData);
+    }
+  }
+});
