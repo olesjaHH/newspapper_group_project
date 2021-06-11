@@ -42,16 +42,6 @@ function renderHtml(data) {
   });
 }
 
-<<<<<<< HEAD
-$on(window, "DOMContentLoaded", topgGermany);
-
-
-
-
-
-
-	
-=======
 $on(window, 'DOMContentLoaded', topgGermany);
 
 $('#buttonLeft').addEventListener('click', (e) => {
@@ -77,4 +67,3 @@ $('.btn').addEventListener('click', async () => {
     renderHtml(newsData);
   }
 });
->>>>>>> 127aa352484b743d970369dfa0a82f651ceca58d
