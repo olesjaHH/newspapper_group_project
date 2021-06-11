@@ -39,7 +39,7 @@ function renderHtml(data) {
         </article>`;
   });
 }
-
+//test
 $on(window, 'DOMContentLoaded', async (e) => {
   newsData = await topgGermany();
   $('#titleNews').innerHTML = `actual news from Germany`;
