@@ -16,11 +16,14 @@ async function searchNews(el) {
   return data.articles;
 }
 
+// Show the actual news in German
 async function topgGermany() {
   let response = await fetch(
     `http://newsapi.org/v2/top-headlines?country=de&apiKey=${apiKey}`
   );
+  
   let data = await response.json();
+  console.log(data)
   return data.articles;
 }
 
@@ -42,12 +45,13 @@ function renderHtml(data, from, to) {
         } <span class="published">${new Date(
       e.publishedAt
     ).toLocaleDateString()}</span></p>
-        <h2 class="title">${e.title}</h2>
+        <a href="${e.url}"class="title" target="_blank">${e.title}</a>
         <p class="content">${e.content}.</p>
         </article>`;
   });
 }
 
+// Weather API with Location by browser
 (function getLocationAndWeather() {
   fetch('http://extreme-ip-lookup.com/json/')
     .then((res) => res.json())
@@ -74,7 +78,7 @@ function renderHtml(data, from, to) {
     });
 })();
 
-//test
+//Main Slide
 $on(window, 'DOMContentLoaded', async (e) => {
   $('#buttonLeft').style.display = 'none';
 
@@ -108,6 +112,7 @@ $('#buttonRight').addEventListener('click', (e) => {
   renderHtml(newsData);
 });
 
+// Search function by text input
 $('#Search').addEventListener('keypress', async (e) => {
   if (e.key == 'Enter') {
     if ($('#Search').value) {
