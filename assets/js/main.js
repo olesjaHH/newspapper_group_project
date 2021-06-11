@@ -49,10 +49,23 @@ function renderHtml(data) {
     .then((res) => res.json())
     .then((res) => {
       fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${res.city}&appid=${weatherApi}`
+        `http://api.openweathermap.org/data/2.5/weather?q=${res.city}&appid=${weatherApi}&units=metric`
       )
         .then((res) => res.json())
-        .then((res) => console.log(res));
+        .then(json => {
+        console.log(json)
+        document.getElementById('weather').innerHTML = `
+        <span class="weatherIcon">
+                <img src="http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png">
+        </span>
+        <span class="temp">
+          <span class="styleWeather">${Math.floor(json.main.temp)}°C</span>
+          <span class="styleWeather2">${Math.floor(json.main.temp_max)}°</span>
+          <span class="styleWeather3">${Math.floor(json.main.temp_min)}°</span>
+        </span>
+        `
+         });
+    
     });
 })();
 
