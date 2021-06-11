@@ -5,43 +5,29 @@ let $on = (el, ev, fn) =>
     ? el.forEach((o) => $on(o, ev, fn))
     : el.addEventListener(ev, fn);
 
-function searchNews(el) {
-  //   let response = await fetch(
-  //     `http://newsapi.org/v2/everything?q=${el}&from=2021-06-10&sortBy=popularity&apiKey=${apiKey}`
-  //   );
-  //   let data = await response.json();
-  //   return data;
-  fetch(
+let counter = 0;
+let newsData;
+
+async function searchNews(el) {
+  let response = await fetch(
     `http://newsapi.org/v2/everything?q=${el}&from=2021-06-10&sortBy=popularity&apiKey=${apiKey}`
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      if (res) {
-        $('#actualNews').innerHTML = '';
-        renderHtml(res);
-      }
-    });
+  );
+  let data = await response.json();
+  return data.articles;
 }
-$('.btn').addEventListener('click', (e) => {
-  if ($('#Search').value) {
-    searchNews($('#Search').value);
-  }
-});
-// searchNews('Apple');
 
 function topgGermany() {
   fetch(`http://newsapi.org/v2/top-headlines?country=de&apiKey=${apiKey}`)
     .then((res) => res.json())
     .then((res) => {
       if (res) {
-        renderHtml(res);
+        renderHtml(res.articles);
       }
     });
 }
 
 function renderHtml(data) {
-  let myData = data.articles;
-  let sliceData = myData.slice(0, 6);
+  let sliceData = data.slice(counter, counter + 4);
   sliceData.forEach((e) => {
     $('#actualNews').innerHTML += `
         <article id="topNews1">
@@ -56,3 +42,29 @@ function renderHtml(data) {
 }
 
 $on(window, 'DOMContentLoaded', topgGermany);
+
+$('#buttonLeft').addEventListener('click', () => {
+  if (counter === 0) {
+    e.disabled = true;
+  } else {
+    counter -= 4;
+    renderHtml(newsData);
+  }
+});
+
+$('#buttonRight').addEventListener('click', () => {
+  if (counter === 20) {
+    e.disabled = true;
+  } else {
+    counter += 4;
+    renderHtml(newsData);
+  }
+});
+
+$('.btn').addEventListener('click', async () => {
+  if ($('#Search').value) {
+    counter = 0;
+    newsData = await searchNews($('#Search').value);
+    renderHtml(newsData);
+  }
+});
