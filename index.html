@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
     <title>newspapper</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
@@ -11,25 +14,36 @@
   <body>
 
       <header>
-        <h1>News</h1>
-        <section>
-          <div class="logo">
-            <a href="#" class="imglogo">
+        
+        <section class="headline">
+            <h1>
+              <span class="logo">
+              <a href="#" class="imglogo">
               <img>
-            </a>
-          </div>
-          <label for="site-search">Search information</label>
-          <input type="text" id="Search" >
-          <button class="btn">Search</button>
-        </section>
+              </a>
+              </span>NEWSPAPER
+            </h1>
+          </section>
+     
         <nav id="navbar">
+          <section class="icMnu">
+          <div class="iconmenu"></div>
+          <div class="iconmenu"></div>
+          <div class="iconmenu"></div>
+        </section>
           <section class="menu">
-            <div class="items"><a href="#">Sport</a></div>
-            <div class="items"><a href="#">Culture</a></div>
-            <div class="items"><a href="#">Events</a></div>
-            <div class="items"><a href="#">Business</a></div>
-            <div class="items"><a href="#">Technology</a></div>
-            <div class="items"><a href="#">Lifestyle</a></div>
+            <div class="items"><a href="#">SPORT </a></div>
+            <div class="items"><a href="#">CULTURE </a></div>
+            <div class="items"><a href="#">EVENTS </a></div>
+            <div class="items"><a href="#">BUSINESS </a></div>
+            <div class="items"><a href="#">TECHNOLOGY </a></div>
+            <div class="items"><a href="#">LIFESTYLE </a></div>
+          </section>
+          <section>
+            <label for="site-search"></label>
+            <input type="text" id="Search" placeholder="search..">
+            
+           <!-- <button class="btn">Search</button>-->
           </section>
         </nav>
       </header>
