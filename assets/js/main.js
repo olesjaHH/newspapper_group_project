@@ -61,7 +61,7 @@ $on(window, 'DOMContentLoaded', async (e) => {
   $('#buttonLeft').style.display = 'none';
 
   newsData = await topgGermany();
-  $('#titleNews').innerHTML = `actual news from Germany`;
+  $('#titleNews').innerHTML = `actual news in German`;
   counter = 0;
   renderHtml(newsData);
 });
