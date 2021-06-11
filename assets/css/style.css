@@ -58,19 +58,27 @@ body {
 footer {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 3%;
 }
 footer a {
   text-decoration: none;
   color: black;
 }
+
 body {
   font-family: "Zilla Slab", serif;
 }
+
 /* --------------Main----------------- */
+#titleNews {
+  margin: 0 0 0 7%;
+}
 #actualNews {
   display: flex;
   padding: 5%;
   text-align: center;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 #topNews1 {
   padding: 2%;
@@ -86,4 +94,34 @@ body {
 }
 .urlToImage {
   width: 100%;
+}
+#slideBar {
+  display: flex;
+  position: relative;
+}
+#buttonLeft {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+}
+#buttonLeft::before {
+  content: "\276E";
+  font-size: 50px;
+}
+#buttonLeft:hover::before {
+  font-size: 70px;
+  opacity: 0.7;
+}
+#buttonRight {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+}
+#buttonRight::before {
+  content: "\276F";
+  font-size: 50px;
+}
+#buttonRight:hover::before {
+  font-size: 70px;
+  opacity: 0.7;
 }
