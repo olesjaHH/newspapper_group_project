@@ -106,6 +106,7 @@ main {
   position: absolute;
   top: 200px;
   left: 50px;
+  display: block;
 }
 #buttonLeft::before {
   content: "\276E";
@@ -119,6 +120,7 @@ main {
   position: absolute;
   top: 200px;
   right: 50px;
+  display: block;
 }
 #buttonRight::before {
   content: "\276F";
@@ -127,4 +129,7 @@ main {
 #buttonRight:hover::before {
   font-size: 70px;
   opacity: 0.7;
+}
+.buttonHide {
+  display: none;
 }
