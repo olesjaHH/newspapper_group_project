@@ -101,3 +101,11 @@ $('#Search').addEventListener('keypress', async (e) => {
     }
   }
 });
+
+// function for menu icon
+
+function  barmenu(a){
+  a.classList.toggle("chang");
+}
+
+
