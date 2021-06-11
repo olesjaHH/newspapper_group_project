@@ -27,6 +27,7 @@ function topgGermany() {
 }
 
 function renderHtml(data) {
+  $('#actualNews').innerHTML = '';
   let sliceData = data.slice(counter, counter + 4);
   sliceData.forEach((e) => {
     $('#actualNews').innerHTML += `
@@ -43,22 +44,20 @@ function renderHtml(data) {
 
 $on(window, 'DOMContentLoaded', topgGermany);
 
-$('#buttonLeft').addEventListener('click', () => {
-  if (counter === 0) {
-    e.disabled = true;
-  } else {
-    counter -= 4;
-    renderHtml(newsData);
+$('#buttonLeft').addEventListener('click', (e) => {
+  if (counter === 0 || !newsData) {
+    return;
   }
+  counter -= 4;
+  renderHtml(newsData);
 });
 
-$('#buttonRight').addEventListener('click', () => {
-  if (counter === 20) {
-    e.disabled = true;
-  } else {
-    counter += 4;
-    renderHtml(newsData);
+$('#buttonRight').addEventListener('click', (e) => {
+  if (counter === 16 || !newsData) {
+    return;
   }
+  counter += 4;
+  renderHtml(newsData);
 });
 
 $('.btn').addEventListener('click', async () => {
