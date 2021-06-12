@@ -10,6 +10,9 @@ body {
 .headline {
   text-align: center;
 }
+.headline h1 {
+  font-size: 3rem;
+}
 #weather {
   display: block;
   text-align: right;
@@ -35,7 +38,7 @@ body {
 input[type='text'] {
   background-color: rgb(240, 238, 238);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 10px 40px;
   border: 1px solid darkgrey;
   outline: none;
 }
@@ -114,7 +117,13 @@ body {
 
 /* --------------Main----------------- */
 main {
-  min-height: 75vh;
+  min-height: 60vh;
+}
+.title {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 #titleNews {
   margin: 5% 0 0 7%;
@@ -129,6 +138,9 @@ main {
 #topNews1 {
   padding: 2%;
   width: 30%;
+}
+#topNews1 a:hover {
+  border-bottom: 1px solid black;
 }
 .author {
   display: flex;
@@ -180,7 +192,7 @@ main {
 
 .img-container {
   width: 100%;
-  height: 40%;
+  /* height: 40%; */
 }
 
 @media (max-width: 1024px) {
